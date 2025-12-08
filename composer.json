@@ -1,0 +1,15 @@
+{
+    "name": "talentosena/hv-mvc",
+    "description": "Sistema de gestión de hojas de vida - TalentoSENA",
+    "type": "project",
+    "require": {
+        "php": ">=7.4",
+        "mpdf/mpdf": "^8.2"
+    },
+    "autoload": {
+        "classmap": [
+            "Model/",
+            "Controller/"
+        ]
+    }
+}

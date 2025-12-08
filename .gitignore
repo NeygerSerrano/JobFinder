@@ -1,0 +1,27 @@
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Tailwind output (opcional - puedes commitear el output.css si prefieres)
+# assets/css/output.css
+
+# Composer
+/vendor/
+composer.phar
+
+# Logs y cache
+*.log
+.DS_Store
+Thumbs.db
