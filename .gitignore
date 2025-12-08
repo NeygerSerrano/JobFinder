@@ -25,3 +25,7 @@ composer.phar
 *.log
 .DS_Store
 Thumbs.db
+
+# Uploads (Ignorar contenido pero mantener carpeta)
+/uploads/*
+!/uploads/.gitkeep
