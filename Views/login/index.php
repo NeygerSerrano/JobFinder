@@ -19,10 +19,10 @@
                         </svg>
                     </div>
                     <h1 class="text-5xl font-bold mb-6 leading-tight">
-                        Sistema de Gestión de Hojas de Vida y Bolsa de Empleo
+                        JobFinder
                     </h1>
                     <p class="text-xl text-white/90 leading-relaxed">
-                        Conectamos talento con oportunidades. Gestiona tu perfil profesional y encuentra las mejores vacantes del mercado.
+                        Sistema de Gestión de Hojas de Vida y Bolsa de Empleo.
                     </p>
                 </div>
                 
@@ -209,6 +209,16 @@
                             </span>
                         </button>
                     </form>
+                </div>
+
+                <!-- Register Link -->
+                <div class="text-center mt-6">
+                    <p class="text-sm text-gray-600">
+                        ¿No tienes una cuenta? 
+                        <a href="index.php?controller=registro&action=index" class="font-medium text-primary hover:text-primary-700 transition-colors">
+                            Regístrate aquí
+                        </a>
+                    </p>
                 </div>
 
                 <!-- Footer -->

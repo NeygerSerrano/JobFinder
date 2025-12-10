@@ -2,6 +2,7 @@
 
 $controllers = array(
     'login' => ['index', 'login', 'logout', 'error'],
+    'registro' => ['index', 'usuario', 'empresa'],
     'home' => ['index'],
     'empresa' => ['index', 'crear', 'editar', 'eliminar', 'ver', 'perfil'],
     'datospersonales' => ['index', 'crear', 'editar', 'eliminar', 'ver', 'perfil', 'generarPDF'],
@@ -41,6 +42,11 @@ function call($controller, $action)
         case 'login':
             require_once('Model/Login.php');
             $controllerObj = new LoginController();
+            break;
+        case 'registro':
+            require_once('Model/datospersonales.php');
+            require_once('Model/empresa.php');
+            $controllerObj = new RegistroController();
             break;
         case 'home':
             $controllerObj = new HomeController();
