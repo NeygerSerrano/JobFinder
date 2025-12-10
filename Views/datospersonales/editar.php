@@ -129,11 +129,11 @@ require './Views/layouts/header.php';
                 Cancelar
             </a>
             
-            <a href="index.php?controller=datospersonales&action=perfil" 
+            <button type="submit" 
                 class="inline-flex items-center px-6 py-3 text-sm font-medium text-white bg-primary border border-transparent rounded-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary transition">
                 <span class="mr-2">💾</span>
                 Actualizar datos
-            </a>
+            </button>
         </div>
     </form>
 </div>

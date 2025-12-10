@@ -112,7 +112,11 @@ class Datospersonales {
             WHERE nro_documento = ?
         ');
 
-        $hashed_password = password_hash($this->password, PASSWORD_DEFAULT);
+        // Solo hashear la contraseña si no está ya hasheada (nueva contraseña)
+        $password_to_save = $this->password;
+        if (!empty($this->password) && !password_get_info($this->password)['algo']) {
+            $password_to_save = password_hash($this->password, PASSWORD_DEFAULT);
+        }
 
         $stmt->bind_param(
             'ssssssssssss',
@@ -124,7 +128,7 @@ class Datospersonales {
             $this->ciudad_residencia,
             $this->correo_electronico,
             $this->telefono,
-            $hashed_password,
+            $password_to_save,
             $this->sexo,
             $this->foto,
             // $this->hab1,

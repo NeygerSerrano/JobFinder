@@ -199,7 +199,7 @@ require './Views/layouts/header.php';
                     <?php foreach ($proyectos as $proyecto): ?>
                         <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
                             <?php if ($proyecto->getFoto_proyecto()): ?>
-                                <img src="<?php echo htmlspecialchars($proyecto->getFoto_proyecto()); ?>" alt="Proyecto" class="w-full h-32 object-cover rounded-lg mb-4">
+                                <img src="uploads/proyectos/<?php echo htmlspecialchars($proyecto->getFoto_proyecto()); ?>" alt="Proyecto" class="w-full h-32 object-cover rounded-lg mb-4">
                             <?php endif; ?>
                             <h3 class="text-lg font-semibold text-gray-900 mb-2"><?php echo htmlspecialchars($proyecto->getNombre_proyecto()); ?></h3>
                             <p class="text-gray-500 text-sm mb-2"><?php echo htmlspecialchars($proyecto->getFecha()); ?></p>

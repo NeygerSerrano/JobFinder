@@ -11,7 +11,7 @@ require './Views/layouts/header.php';
             <table id="tablaVacantes" class="min-w-full border-collapse text-sm text-left text-gray-700">
                 <thead class="bg-gray-100 text-xs uppercase text-gray-600">
                     <tr>
-                        <th class="px-4 py-3">ID Vacante</th>
+                        <!-- <th class="px-4 py-3">ID Vacante</th> -->
                         <th class="px-4 py-3">Cargo</th>
                         <th class="px-4 py-3">Nro. Vacantes</th>
                         <th class="px-4 py-3">Tipo de vínculo</th>
@@ -22,7 +22,7 @@ require './Views/layouts/header.php';
                 <tbody class="divide-y divide-gray-200">
                     <?php foreach ($vacantes as $vac): ?>
                         <tr class="hover:bg-gray-50">
-                            <td class="px-4 py-2"><?= htmlspecialchars($vac->getVacant_id()) ?></td>
+                            <!-- <td class="px-4 py-2"><?= htmlspecialchars($vac->getVacant_id()) ?></td> -->
                             <td class="px-4 py-2"><?= htmlspecialchars($vac->getCargo()) ?></td>
                             <td class="px-4 py-2"><?= htmlspecialchars($vac->getNro_vacantes()) ?></td>
                             <td class="px-4 py-2"><?= htmlspecialchars($vac->getTipo_vinculo()) ?></td>

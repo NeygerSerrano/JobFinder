@@ -37,20 +37,27 @@ require './Views/layouts/header.php';
                 class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary" />
         </div>
 
-        <div>
+        <div class="flex items-center justify-between pt-6 border-t border-gray-200">
+            <a href="index.php?controller=portafolio&action=index"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-lg hover:bg-gray-200 transition">
+                <span class="mr-2">←</span>
+                Cancelar
+            </a>
+            
             <button type="submit"
-                class="w-full bg-primary text-white font-semibold py-3 rounded hover:bg-primary-700 transition">
-                💾 Guardar proyecto
+                class="inline-flex items-center px-6 py-3 text-sm font-medium text-white bg-primary border border-transparent rounded-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary transition">
+                <span class="mr-2">💾</span>
+                Guardar proyecto
             </button>
         </div>
     </form>
 
-    <div class="mt-6">
+    <!-- <div class="mt-6">
         <a href="index.php?controller=portafolio&action=index"
             class="inline-block text-primary hover:text-primary-800 font-medium transition">
             ⬅️ Volver al inicio
         </a>
-    </div>
+    </div> -->
 </div>
 
 <?php require './Views/layouts/footer.php'; ?>

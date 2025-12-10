@@ -75,6 +75,11 @@ class DatospersonalesController {
             $datos = $_POST;
             $datos['foto'] = $fotoNombre;
 
+            // Si la contraseña está vacía, mantener la actual
+            if (empty($datos['password'])) {
+                $datos['password'] = $personaExistente->getPassword();
+            }
+
             $persona = new Datospersonales($datos);
             $persona->actualizar();
 
@@ -169,15 +174,24 @@ class DatospersonalesController {
             $portafolio = Portafolio::buscarPorUsuario($nro_documento);
         }
         
+        // Función para limpiar y codificar texto correctamente
+        function limpiarTexto($texto) {
+            if (empty($texto)) return '';
+            // Asegurar codificación UTF-8
+            $texto = mb_convert_encoding($texto, 'UTF-8', 'auto');
+            // Limpiar caracteres problemáticos si es necesario
+            return htmlspecialchars($texto, ENT_QUOTES, 'UTF-8');
+        }
+
         // Preparar variables para la plantilla
-        $nombreCompleto = $datosPersonales->getNombres() . ' ' . $datosPersonales->getApellidos();
-        $tipoDocumento = $datosPersonales->getTipo_documento();
-        $nroDocumento = $datosPersonales->getNro_documento();
-        $correo = $datosPersonales->getCorreo_electronico();
-        $telefono = $datosPersonales->getTelefono();
-        $direccion = $datosPersonales->getDireccion_residencia();
-        $fecha_nacimiento = $datosPersonales->getFecha_nacimiento();
-        $sexo = $datosPersonales->getSexo();
+        $nombreCompleto = limpiarTexto($datosPersonales->getNombres() . ' ' . $datosPersonales->getApellidos());
+        $tipoDocumento = limpiarTexto($datosPersonales->getTipo_documento());
+        $nroDocumento = limpiarTexto($datosPersonales->getNro_documento());
+        $correo = limpiarTexto($datosPersonales->getCorreo_electronico());
+        $telefono = limpiarTexto($datosPersonales->getTelefono());
+        $direccion = limpiarTexto($datosPersonales->getDireccion_residencia());
+        $fecha_nacimiento = limpiarTexto($datosPersonales->getFecha_nacimiento());
+        $sexo = limpiarTexto($datosPersonales->getSexo());
         
         // Foto (agregar ruta completa si existe)
         $foto = null;
@@ -193,17 +207,24 @@ class DatospersonalesController {
         include __DIR__ . '/../Views/templates/cv_template.php';
         $html = ob_get_clean();
         
+        // Asegurar codificación UTF-8 del HTML
+        $html = mb_convert_encoding($html, 'UTF-8', 'auto');
+        
         // Configurar mPDF
         try {
             $mpdf = new \Mpdf\Mpdf([
                 'mode' => 'utf-8',
                 'format' => 'A4',
+                'default_font_size' => 11,
+                'default_font' => 'dejavusans',
                 'margin_left' => 20,
                 'margin_right' => 20,
                 'margin_top' => 20,
                 'margin_bottom' => 20,
                 'margin_header' => 0,
-                'margin_footer' => 0
+                'margin_footer' => 0,
+                'autoScriptToLang' => true,
+                'autoLangToFont' => true
             ]);
             
             // Escribir el HTML
