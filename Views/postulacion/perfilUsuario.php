@@ -92,7 +92,7 @@ require './Views/layouts/header.php';
                     <?php foreach ($proyectos as $proy): ?>
                         <div class="bg-gray-50 p-4 rounded-lg border">
                             <?php if ($proy->getFoto_proyecto()): ?>
-                                <img src="<?php echo htmlspecialchars($proy->getFoto_proyecto()); ?>" class="w-full h-32 object-cover rounded mb-2">
+                                <img src="uploads/proyectos/<?php echo htmlspecialchars($proy->getFoto_proyecto()); ?>" class="w-full h-32 object-cover rounded mb-2">
                             <?php endif; ?>
                             <h3 class="font-semibold"><?php echo htmlspecialchars($proy->getNombre_proyecto()); ?></h3>
                             <p class="text-sm text-gray-500"><?php echo htmlspecialchars($proy->getFecha()); ?></p>

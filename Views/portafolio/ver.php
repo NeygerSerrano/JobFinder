@@ -11,7 +11,7 @@ require './Views/layouts/header.php';
             <table id="tablaPortafolios" class="min-w-full border-collapse text-sm text-left text-gray-700">
                 <thead class="bg-gray-100 text-xs uppercase text-gray-600">
                     <tr>
-                        <th class="px-4 py-3">ID Proyecto</th>
+                        <!-- <th class="px-4 py-3">ID Proyecto</th> -->
                         <th class="px-4 py-3">Nombre del Proyecto</th>
                         <th class="px-4 py-3">Fecha</th>
                         <th class="px-4 py-3">Descripción</th>
@@ -24,13 +24,13 @@ require './Views/layouts/header.php';
                 <tbody class="divide-y divide-gray-200">
                     <?php foreach ($portafolios as $port): ?>
                         <tr class="hover:bg-gray-50">
-                            <td class="px-4 py-2"><?= htmlspecialchars($port->getId_proyecto()) ?></td>
+                            <!-- <td class="px-4 py-2"><?= htmlspecialchars($port->getId_proyecto()) ?></td> -->
                             <td class="px-4 py-2"><?= htmlspecialchars($port->getNombre_proyecto()) ?></td>
                             <td class="px-4 py-2"><?= htmlspecialchars($port->getFecha()) ?></td>
                             <td class="px-4 py-2"><?= htmlspecialchars($port->getDescripcion_proyecto()) ?></td>
                             <td class="px-4 py-2">
                                 <?php if ($port->getFoto_proyecto()): ?>
-                                    <img src="<?= htmlspecialchars($port->getFoto_proyecto()) ?>" 
+                                    <img src="uploads/proyectos/<?= htmlspecialchars($port->getFoto_proyecto()) ?>" 
                                          alt="Foto proyecto" 
                                          class="w-20 h-16 object-cover rounded">
                                 <?php else: ?>

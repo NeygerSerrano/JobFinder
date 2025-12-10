@@ -81,6 +81,11 @@ class EmpresaController {
             $datos['logo_foto'] = $logoNombre;
             $datos['nit_empresa'] = $nit_empresa; // asegúrate de mantener el NIT
 
+            // Si la contraseña está vacía, mantener la actual
+            if (empty($datos['password_empresa'])) {
+                $datos['password_empresa'] = $empresaExistente->getPassword_empresa();
+            }
+
             $empresaActualizada = new Empresa($datos);
             $empresaActualizada->actualizar();
 

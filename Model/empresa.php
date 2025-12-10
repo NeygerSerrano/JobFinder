@@ -89,7 +89,12 @@ class Empresa {
             pagweb_empresa = ?
             WHERE nit_empresa = ?
         ");
-        $password_hashed = password_hash($this->getPassword_empresa(), PASSWORD_DEFAULT);
+        // Solo hashear la contraseña si no está ya hasheada (nueva contraseña)
+        $password_to_save = $this->getPassword_empresa();
+        if (!empty($this->getPassword_empresa()) && !password_get_info($this->getPassword_empresa())['algo']) {
+            $password_to_save = password_hash($this->getPassword_empresa(), PASSWORD_DEFAULT);
+        }
+
         $update->bind_param(
             "sssssssss",
             $this->nombre_empresa,
@@ -97,7 +102,7 @@ class Empresa {
             $this->nombre_delegado,
             $this->cargo_delegado,
             $this->correo_empresa,
-            $password_hashed,
+            $password_to_save,
             $this->telefono_empresa,
             $this->pagweb_empresa,
             $this->nit_empresa

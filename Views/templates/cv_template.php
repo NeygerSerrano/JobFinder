@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="UTF-8"/>
     <style>
         @page {
             margin: 20mm;
         }
         
         body {
-            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-family: 'DejaVu Sans', 'Arial Unicode MS', Arial, sans-serif;
             font-size: 11pt;
             color: #333;
             line-height: 1.6;
@@ -43,7 +44,14 @@
         }
         
         .contact-info span {
-            margin: 0 10px;
+            margin: 0 15px;
+            display: inline-block;
+        }
+        
+        .contact-info span:before {
+            content: "• ";
+            color: #39A900;
+            font-weight: bold;
         }
         
         /* Section Headers */
@@ -58,12 +66,35 @@
             border-bottom: 2px solid #39A900;
             padding-bottom: 5px;
             margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .section-title:before {
+            content: "▪ ";
+            color: #39A900;
+            font-size: 18pt;
+            margin-right: 5px;
         }
         
         /* Education / Experience Items */
         .item {
             margin-bottom: 15px;
             page-break-inside: avoid;
+            padding-left: 15px;
+            border-left: 3px solid #f0f0f0;
+            position: relative;
+        }
+        
+        .item:before {
+            content: "◦";
+            position: absolute;
+            left: -8px;
+            top: 0;
+            color: #39A900;
+            font-weight: bold;
+            background: white;
+            width: 16px;
+            text-align: center;
         }
         
         .item-header {
@@ -171,13 +202,13 @@
         
         <div class="contact-info">
             <?php if (!empty($correo)): ?>
-                <span>✉ <?= $correo ?></span>
+                <span>Email: <?= $correo ?></span>
             <?php endif; ?>
             <?php if (!empty($telefono)): ?>
-                <span>📞 <?= $telefono ?></span>
+                <span>Tel: <?= $telefono ?></span>
             <?php endif; ?>
             <?php if (!empty($direccion)): ?>
-                <span>📍 <?= $direccion ?></span>
+                <span>Dirección: <?= $direccion ?></span>
             <?php endif; ?>
         </div>
     </div>
@@ -270,7 +301,7 @@
     
     <!-- Footer -->
     <div class="footer">
-        Generado por TalentoSENA - <?= date('d/m/Y H:i') ?>
+        Hoja de Vida generada el <?= date('d/m/Y') ?> | JobFinder - Sistema de Gestión de Talento
     </div>
     
 </body>

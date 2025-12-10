@@ -11,7 +11,7 @@ require './Views/layouts/header.php';
             <table id="tablaEducaciones" class="min-w-full border-collapse text-sm text-left text-gray-700">
                 <thead class="bg-gray-100 text-xs uppercase text-gray-600">
                     <tr>
-                        <th class="px-4 py-3">ID Estudio</th>
+                        <!-- <th class="px-4 py-3">ID Estudio</th> -->
                         <th class="px-4 py-3">Fecha inicio</th>
                         <th class="px-4 py-3">Fecha fin</th>
                         <th class="px-4 py-3">Título obtenido</th>
@@ -24,7 +24,7 @@ require './Views/layouts/header.php';
                 <tbody class="divide-y divide-gray-200">
                     <?php foreach ($educaciones as $edu): ?>
                         <tr class="hover:bg-gray-50">
-                            <td class="px-4 py-2"><?= htmlspecialchars($edu->getId_estudio()) ?></td>
+                            <!-- <td class="px-4 py-2"><?= htmlspecialchars($edu->getId_estudio()) ?></td> -->
                             <td class="px-4 py-2"><?= htmlspecialchars($edu->getFecha_ini()) ?></td>
                             <td class="px-4 py-2"><?= htmlspecialchars($edu->getFecha_fin()) ?></td>
                             <td class="px-4 py-2"><?= htmlspecialchars($edu->getTitulo_estudio()) ?></td>
