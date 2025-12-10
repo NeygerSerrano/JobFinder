@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-09-2025 a las 19:13:37
+-- Tiempo de generación: 10-12-2025 a las 18:17:41
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `hv3_mvc`
+-- Base de datos: `hv3`
 --
 
 -- --------------------------------------------------------
@@ -47,6 +47,7 @@ CREATE TABLE `datos_personales` (
 --
 
 INSERT INTO `datos_personales` (`nro_documento`, `tipo_documento`, `nombres`, `apellidos`, `fecha_nacimiento`, `direccion_residencia`, `ciudad_residencia`, `correo_electronico`, `telefono`, `password`, `sexo`, `foto`) VALUES
+(123456789, 'CC', 'Juan Carlos', 'Pérez García', '1995-12-10', 'Calle 123 #45-67', 'Bogotá', 'juanpega@gmail.com', 1234567899, '$2y$10$v26cCNAvwhBAlLsIgyaBN.4rzcOJ5sKs0YUn9d5sJ9wcDxxMQ2B6G', 'M', '69399b2fa56f0_fotoYo.jpg'),
 (1005025606, 'CC', 'Neyger David', 'Serrano Márquez', '2001-09-20', 'Av. 15 #22-56 Alfonso López', 'Cúcuta', 'neyger2001@gmail.com', 3104010112, '$2y$10$vuexoXSa93jmpZkJY20cY.gqJccD3.6tAt29FpipanpXoEc2GbDLO', 'M', 'uploads/685c12ca5991d_fotoPersonal.jpeg'),
 (1092526208, 'CC', 'Kleidy', 'Gonzalez Mena', '2004-11-10', 'Cll 22 #12-109 Alfonso Lopez', 'Cucuta', 'klei123@gmail.com', 3102160669, '$2y$10$/yxIGFbRFm7lOqp6q21kBeVNA1FEwU3yJ5ppo8k8TKqNDb9NVPfT6', 'Es', 'uploads/68647c432024d_foto-klei.jpeg'),
 (1092533191, 'TI', 'Gysell Stefania', 'Peña Ardila', '2007-08-28', 'Los Laureles', 'Cúcuta', 'gygy123@gmail.com', 3209039403, '$2y$10$YntpfDojXTARnL438RlzkOxKjW9smEz/Sl58PiNw4rZPHwK3J9eba', 'Es', 'uploads/685c244714a0c_gygy.jpeg'),
@@ -65,7 +66,7 @@ CREATE TABLE `educacion` (
   `fecha_fin` date NOT NULL,
   `titulo_estudio` varchar(60) NOT NULL,
   `entidad` varchar(60) NOT NULL,
-  `descripcion` varchar(150) NOT NULL,
+  `descripcion` varchar(255) NOT NULL,
   `nro_doc_persona` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -75,7 +76,8 @@ CREATE TABLE `educacion` (
 
 INSERT INTO `educacion` (`id_estudio`, `fecha_ini`, `fecha_fin`, `titulo_estudio`, `entidad`, `descripcion`, `nro_doc_persona`) VALUES
 (3, '2016-02-01', '2018-11-18', 'Bachiller Técnico en Informática', 'Colegio Santa Cecilia', 'Con honores 10 de 10', 1005025606),
-(4, '2020-08-02', '2023-09-28', 'Tecnólogo en Análisis y Desarrollo de Sistemas de Informació', 'Servicio Nacional de Aprendizaje', 'No aprendimos nada', 1005025606);
+(4, '2020-08-02', '2023-09-28', 'Tecnólogo en Análisis y Desarrollo de Sistemas de Informació', 'Servicio Nacional de Aprendizaje', 'No aprendimos nada', 1005025606),
+(8, '2008-02-04', '2014-11-21', 'Ingeniero de Sistemas', 'Universidad Francisco de Paula Santander', 'Graduado con honores como Ingeniero de Sistemas en la Universidad Francisco de Paula Santander', 123456789);
 
 -- --------------------------------------------------------
 
@@ -100,6 +102,7 @@ CREATE TABLE `empresa` (
 --
 
 INSERT INTO `empresa` (`nit_empresa`, `nombre_empresa`, `logo_foto`, `nombre_delegado`, `cargo_delegado`, `correo_empresa`, `password_empresa`, `telefono_empresa`, `pagweb_empresa`) VALUES
+(987654321, 'TecnoSoft', '69399f1de1302_logoSoftware.jpg', 'María García', 'Coordinadora de Recursos Humanos', 'tecnosoft@contact.com', '$2y$10$vuexoXSa93jmpZkJY20cY.gqJccD3.6tAt29FpipanpXoEc2GbDLO', 1234567899, ''),
 (1122334455, 'Kanye West', '68add32ab0c7f_gato west.jpg', 'Yeyersito', 'Admin', 'yeyer@gmail.prueba', '$2y$10$nJ551d8xQ3dg0AjPVtSBbut4z6/ZuV24RNRMD4KY.aVfDVRO9LM8i', 3001234567, 'no hay pagina aún'),
 (8978675645, 'Gygy Shop', '68add334bfa38_esrek.png', 'Gysell Peña', 'Coordinadora', 'gygyshop@gmail.com', '$2y$10$vuexoXSa93jmpZkJY20cY.gqJccD3.6tAt29FpipanpXoEc2GbDLO', 3209039403, 'gygyshop.com');
 
@@ -115,7 +118,7 @@ CREATE TABLE `experiencia` (
   `fecha_fin` date NOT NULL,
   `cargo` varchar(50) NOT NULL,
   `empresa` varchar(50) NOT NULL,
-  `descripcion_funciones` varchar(150) NOT NULL,
+  `descripcion_funciones` varchar(455) NOT NULL,
   `nro_doc_persona` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -125,7 +128,9 @@ CREATE TABLE `experiencia` (
 
 INSERT INTO `experiencia` (`id_experiencia`, `fecha_ini`, `fecha_fin`, `cargo`, `empresa`, `descripcion_funciones`, `nro_doc_persona`) VALUES
 (1, '2001-01-20', '2002-01-20', 'Jefe de momazos', 'Memelandia', 'Momazos Chicha', 1093596401),
-(3, '2000-01-01', '2002-02-02', 'Desarrollador Web', 'SENA', 'Chambeador', 1005025606);
+(3, '2000-01-01', '2002-02-02', 'Desarrollador Web', 'SENA', 'Chambeador', 1005025606),
+(4, '2015-05-04', '2018-05-04', 'Desarrollador Web Junior', 'SoftwareYA', 'Desarrollé funciones de apoyo a los proyectos de la empresa como desarrollador web junior manejando TS, PostgreSQL y Git.', 123456789),
+(5, '2019-09-06', '2022-09-06', 'Desarrollador Web Full Stack', 'Soluciones Soft A Medida', 'Como desarrollador web full stack, fui responsable de diseñar, desarrollar e implementar aplicaciones web tanto en el lado del cliente (front-end) como en el lado del servidor (back-end). Utilicé tecnologías como HTML, CSS, JavaScript, y frameworks como React y Node.js para crear interfaces interactivas y optimizadas. También gestioné bases de datos (SQL/NoSQL) y APIs, asegurando la integración fluida entre el front-end y el back-end.', 123456789);
 
 -- --------------------------------------------------------
 
@@ -160,7 +165,7 @@ CREATE TABLE `portafolio` (
   `id_proyecto` int(11) NOT NULL,
   `nombre_proyecto` varchar(50) NOT NULL,
   `fecha` date NOT NULL,
-  `descripcion_proyecto` varchar(150) NOT NULL,
+  `descripcion_proyecto` varchar(455) NOT NULL,
   `foto_proyecto` varchar(100) NOT NULL,
   `link_proyecto` varchar(245) DEFAULT NULL,
   `nro_doc_persona` bigint(20) NOT NULL
@@ -172,7 +177,8 @@ CREATE TABLE `portafolio` (
 
 INSERT INTO `portafolio` (`id_proyecto`, `nombre_proyecto`, `fecha`, `descripcion_proyecto`, `foto_proyecto`, `link_proyecto`, `nro_doc_persona`) VALUES
 (1, 'Proyecto de Prueba 1', '2025-06-25', 'Esta es una prueba', 'uploads/685c30981586f_proyectoPrueba.png', 'No existe un link', 1092533191),
-(2, 'FullCalendarJS', '2025-06-05', 'Calendario de FullCalendarJS en Laravel', 'uploads/685d60c905213_fullcalendarjs.png', '', 1005025606);
+(2, 'FullCalendarJS', '2025-06-05', 'Calendario de FullCalendarJS en Laravel', 'uploads/685d60c905213_fullcalendarjs.png', '', 1005025606),
+(3, 'Plataforma de Gestión de Tareas y Proyectos', '2024-10-30', 'Desarrollé una plataforma web para la gestión de tareas y proyectos, destinada a equipos de trabajo que necesitan organizar y seguir el progreso de sus proyectos de manera eficiente. Los usuarios pueden crear proyectos, asignar tareas a diferentes miembros del equipo, establecer plazos y realizar un seguimiento del estado de cada tarea.\r\n\r\nTecnologías utilizadas:\r\n\r\nFront-end: React.js, Redux, Bootstrap, HTML5, CSS3\r\n\r\nBack-end: Node.js, Express.js\r\n\r', '6939a331c4e6c_TrelloBoard.png', 'No hay despliegue todavía.', 123456789);
 
 -- --------------------------------------------------------
 
@@ -193,6 +199,7 @@ CREATE TABLE `postulacion` (
 --
 
 INSERT INTO `postulacion` (`nro_doc_persona`, `vac_id`, `estado`, `observaciones`, `fecha_postulacion`) VALUES
+(123456789, 5, 'Pendiente', '', '2025-12-10'),
 (1005025606, 1, 'Aceptado', '', '2025-09-15'),
 (1005025606, 4, 'Rechazado', '', '2025-09-15'),
 (1092526208, 4, 'Rechazado', 'No cumple con los requisitos', '2025-09-15'),
@@ -226,7 +233,8 @@ INSERT INTO `vacante` (`vacant_id`, `empr_nit`, `cargo`, `desc_cargo`, `nro_vaca
 (1, 8978675645, 'Desarrollador Web', 'Buscamos desarrollador web full-stack', 2, '', 24, 'Tiempo parcial', 'Oficina', 2500000, '2025-12-10'),
 (2, 8978675645, 'Cocinero', 'Buscamos cocinero con experiencia', 1, 'Saber manejar el cuchillo', 36, 'Tiempo completo', 'Restaurante', 4000000, '2025-07-04'),
 (3, 8978675645, 'Coordinadora de Marketing', 'Desempeño positivo y efectivo en marketing para que la empresa crezca', 1, 'Buena comunicación asertiva, no grosera, etc.', 24, 'Tiempo parcial', 'Oficina', 2000000, '2025-07-02'),
-(4, 8978675645, 'Profesor', 'Enseñar', 2, 'Pedagogía', 3, 'Contrato indefinido', 'Cúcuta', 2500000, '2025-09-30');
+(4, 8978675645, 'Profesor', 'Enseñar', 2, 'Pedagogía', 3, 'Contrato indefinido', 'Cúcuta', 2500000, '2025-09-30'),
+(5, 987654321, 'Desarrollador Web Full Stack', 'En busca de desarrollador web full stack', 3, 'Amplio conocimiento en:\r\n- React o Angular\r\n- JS o TS\r\n- Git, PostgreSQL\r\n- Experiencia de 4 años', 4, 'Contrato fijo', 'Medellín', 3000000, '2025-12-19');
 
 --
 -- Índices para tablas volcadas
@@ -293,25 +301,25 @@ ALTER TABLE `vacante`
 -- AUTO_INCREMENT de la tabla `educacion`
 --
 ALTER TABLE `educacion`
-  MODIFY `id_estudio` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_estudio` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `experiencia`
 --
 ALTER TABLE `experiencia`
-  MODIFY `id_experiencia` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_experiencia` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `portafolio`
 --
 ALTER TABLE `portafolio`
-  MODIFY `id_proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `vacante`
 --
 ALTER TABLE `vacante`
-  MODIFY `vacant_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `vacant_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
